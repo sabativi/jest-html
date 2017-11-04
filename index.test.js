@@ -9,12 +9,12 @@ test("adds 1 + 2 to equal 3", () => {
   expect(sum(1, 2)).toBe(3);
 });
 
-test("adds 1 + 5 to equal 6", () => {
-  expect(sum(1, 5)).toBe(6);
+test("adds 3 + 2 to equal 5", () => {
+  expect(sum(3, 2)).toBe(5);
 });
 
 test("adds 1 + 3 to equal 4", () => {
-  expect(sum(1, 3)).toBe(7);
+  expect(sum(1, 3)).toBe(4);
 });
 
 
