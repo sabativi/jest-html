@@ -4,6 +4,7 @@ const boissons = [{}, {}, {}];
 
 let credit = 0;
 // utilisation d'"énumérations"
+// pieces en cents
 const pieces = {
   piece10: 10,
   piece20: 20,
@@ -11,6 +12,8 @@ const pieces = {
   piece1: 100,
   piece2: 200
 }
+
+let compteur = 0;
 
 function init_noms(noms) {
   if (noms.length != boissons.length) {
@@ -50,6 +53,11 @@ function boire(boisson) {
   return {prix: 0, credit: 0};
 }
 
+//@todo renvoie le prix de la boisson demandée (sans la délivrer)
+function prix(boisson) {
+  return boissons[0].prix;
+}
+
 function stock(boisson) {
   return boissons[0].stock;
 }
@@ -63,12 +71,30 @@ function boissons_disponibles() {
 
 //@todo renvoie la "liste" des boissons possibles, selon le stock et le crédit
 function boissons_possibles() {
-  return null;
+  return ['café', 'vin'];
 }
 
 //@todo mettre à jour le crédit selon la pièce insérée
 function inserer_piece(piece) {
   credit = credit + 5;
+}
+
+//@todo rendre le crédit restant avec le minimum de pièces
+// le résultat est une association pièce=>nombre de pièces
+// (par défaut 0)
+// exemple : rendre 2 pièces de 20 et 1 pièce de 10 (pas minimum !)
+function rendre_monnaie() {
+  return {
+    piece10: 1,
+    piece20: 20
+  }
+}
+
+//@todo donner le crédit en chiffres romains
+// la monnaie romaine étant très dévaluée, on l'affichera en 10ème de cents
+// par exemple, 1€40 => MCD
+function ut_pecuniam() {
+  return "Pecunia emere non felicitatem";
 }
 
 //@todo comme la précédente, on suppose le sucre infini
@@ -88,5 +114,11 @@ module.exports = {
   stock: stock,
   boire_sucre: boire_sucre,
   credit: credit,
-  pieces: pieces
+  rendre_monnaie: rendre_monnaie,
+  ut_pecuniam: ut_pecuniam,
+  pieces: pieces,
+  inserer_piece: inserer_piece,
+  boissons_possibles: boissons_possibles,
+  compteur: compteur,
+  prix: prix
 };
