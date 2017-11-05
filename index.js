@@ -1,39 +1,62 @@
 // note : ce code n'est pas un exemple d'architecture, mais un prétexte...
 
-// const vs let
-const stocks = {
-  cafe: 0,
-  the: 0,
-  chocolat: 0,
-  sucre: 0
+const boissons = [{}, {}, {}];
+
+function init_noms(noms) {
+  if (noms.length != boissons.length) {
+    throw("Il faut " + boissons.length + " noms !");
+  }
+  for (let i = 0; i < boissons.length; i++) {
+    boissons[i].nom = noms[i]
+  }
 }
 
-function stock_cafe() {
-  //@todo
+function init_stocks(stocks) {
+  boissons[0].stock = 30;
 }
 
-// encapsulation => supprimer stocks des exports ensuite
-// option
-function mes_stocks() {
-  //@todo
+function init_prix(prix) {
+
 }
 
-function init() {
-  //@todo
+function init(noms, stocks, prix) {
+  init_noms(noms);
+  init_stocks(stocks);
+  init_prix(prix);
 }
 
-function ajouter_cafe(doses) {
-  //@todo
+//@todo retourner un objet {nom: 'nom', prix: prix}
+// représentant la boisson la moins chère
+function la_moins_chere() {
+  return boissons[0];  
 }
 
-function ajouter_stock(stock) {
-  //@todo
+
+//@todo boisson est le nom de la boisson (chaîne de caractères)
+// doit faire un erreur "Stock insuffisant !" si le stock est insuffisant
+// retourne le prix
+function boire(boisson) {
+  return 0;
+}
+
+function stock(boisson) {
+  return boissons[0].stock;
+}
+
+//@todo comme la précédente, on suppose le sucre infini
+// le prix augmente de 20% par sucre jusqu'au double du prix max
+// sauf chocolat qui contient un sucre gratuit
+function boire_sucre(boisson, nb_sucres) {
+  return 0;
 }
 
 module.exports = {
-  stocks: stocks,
-  init: init, 
-  stock_cafe: stock_cafe,
-  ajouter_cafe: ajouter_cafe, 
-  ajouter_stock: ajouter_stock
+  init: init,
+  init_noms: init_noms,
+  init_prix: init_prix,
+  init_stocks: init_stocks,
+  la_moins_chere: la_moins_chere,
+  boire: boire,
+  stock: stock,
+  boire_sucre: boire_sucre
 };
