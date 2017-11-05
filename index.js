@@ -2,6 +2,16 @@
 
 const boissons = [{}, {}, {}];
 
+let credit = 0;
+// utilisation d'"énumérations"
+const pieces = {
+  piece10: 10,
+  piece20: 20,
+  piece50: 50,
+  piece1: 100,
+  piece2: 200
+}
+
 function init_noms(noms) {
   if (noms.length != boissons.length) {
     throw("Il faut " + boissons.length + " noms !");
@@ -33,14 +43,32 @@ function la_moins_chere() {
 
 
 //@todo boisson est le nom de la boisson (chaîne de caractères)
-// doit faire un erreur "Stock insuffisant !" si le stock est insuffisant
-// retourne le prix
+// doit faire une erreur "Stock insuffisant !" si le stock est insuffisant
+// doit faire une erreur "Crédit insuffisant !" si le crédit est insuffisant (ben oui...)
+// retourne le prix et le crédit restant (objet)
 function boire(boisson) {
-  return 0;
+  return {prix: 0, credit: 0};
 }
 
 function stock(boisson) {
   return boissons[0].stock;
+}
+
+//@todo renvoie la "liste" des boissons disponibles selon le stock
+// utilisation des tableaux en liste (push/pop), cf https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array
+// aller plus loin : http://www.collectionsjs.com/list
+function boissons_disponibles() {
+  return ['café'];
+}
+
+//@todo renvoie la "liste" des boissons possibles, selon le stock et le crédit
+function boissons_possibles() {
+  return null;
+}
+
+//@todo mettre à jour le crédit selon la pièce insérée
+function inserer_piece(piece) {
+  credit = credit + 5;
 }
 
 //@todo comme la précédente, on suppose le sucre infini
@@ -58,5 +86,7 @@ module.exports = {
   la_moins_chere: la_moins_chere,
   boire: boire,
   stock: stock,
-  boire_sucre: boire_sucre
+  boire_sucre: boire_sucre,
+  credit: credit,
+  pieces: pieces
 };
